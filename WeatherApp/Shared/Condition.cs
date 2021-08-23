@@ -10,7 +10,7 @@ namespace WeatherApp.Shared
     {
         public string Text { get; set; }
         public string Icon { get; set; }
-        public string Code { get; set; }
+        public int Code { get; set; }
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Net.Http;
@@ -9,16 +10,17 @@ using WeatherApp.Shared;
 
 namespace WeatherApp.Server.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class CurrentController : ControllerBase
     {
         private readonly HttpClient _client;
+        private readonly IConfiguration _config;
 
-        public CurrentController(HttpClient httpClient)
+        public CurrentController(HttpClient httpClient, IConfiguration configuration)
         {
             _client = httpClient;
+            _config = configuration;
         }
 
         [HttpGet]
@@ -30,7 +32,7 @@ namespace WeatherApp.Server.Controllers
                 RequestUri = new Uri("https://weatherapi-com.p.rapidapi.com/current.json?q=seattle"),
                 Headers = {
                     { "x-rapidapi-host", "weatherapi-com.p.rapidapi.com" },
-                    { "x-rapidapi-key", "3b1420514dmshcc60c7230ee1acep1ac28djsn24c18be253c2" },
+                    { "x-rapidapi-key", _config["XRapidapiKey"] },
                 },
             };
             using var response = await _client.SendAsync(request);

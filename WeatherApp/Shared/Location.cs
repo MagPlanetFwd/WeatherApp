@@ -11,7 +11,7 @@ namespace WeatherApp.Shared
         public float Lon { get; set; }
         public string Tz_id { get; set; }
         public int Localtime_epoch { get; set; }
-        public DateTime Localtime { get; set; }
+        public string Localtime { get; set; }
 
     }
 }
