@@ -1,0 +1,25 @@
+﻿@page "/current_condition"
+
+@inherits CurrentConditionBase
+
+@if (Current == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <img src="@Current.Current.Condition.Icon" />
+        </div>
+        <div class="row">
+            @Current.Current.Condition.Text
+        </div>
+        <div class="row">
+            Precipitation: @Current.Current.Precip_mm mm
+        </div>
+        <div class="row">
+            Wind: @Current.Current.Wind_kph kph
+        </div>
+    </div>
+}
