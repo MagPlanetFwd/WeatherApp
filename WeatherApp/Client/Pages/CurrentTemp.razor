@@ -1,5 +1,25 @@
 ﻿@page "/current_temp"
 
-@code {
+@inherits CurrentTempBase
 
+@if (Current == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <h3>@Current.Location.Name</h3>
+        </div>
+        <div class="row">
+            @Current.Location.Region, @Current.Location.Country
+        </div>
+        <div class="row">
+            <h4>@Current.Current.Temp_c&deg;C</h4>
+        </div>
+        <div class="row">
+            Feels like: @Current.Current.Feelslike_c&deg;C
+        </div>
+    </div>
 }
