@@ -1,0 +1,13 @@
+﻿@page "/current_weather"
+
+@inherits CurrentWeatherBase
+
+@if (Current == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <CurrentTemp Current="Current"></CurrentTemp>
+    <CurrentCondition Current="Current"></CurrentCondition>
+}

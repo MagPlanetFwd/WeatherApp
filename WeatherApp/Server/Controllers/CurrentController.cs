@@ -24,7 +24,7 @@ namespace WeatherApp.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<CurrentWeather> Get()
+        public async Task<RealtimeWeather> Get()
         {
             var request = new HttpRequestMessage
             {
@@ -37,7 +37,7 @@ namespace WeatherApp.Server.Controllers
             };
             using var response = await _client.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            var weather = await response.Content.ReadFromJsonAsync<CurrentWeather>();
+            var weather = await response.Content.ReadFromJsonAsync<RealtimeWeather>();
             return weather;
         }
     }

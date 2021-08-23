@@ -1,6 +1,6 @@
 ﻿namespace WeatherApp.Shared
 {
-    public class CurrentWeather
+    public class RealtimeWeather
     {
         public Location Location { get; set; }
         public Current Current { get; set; }

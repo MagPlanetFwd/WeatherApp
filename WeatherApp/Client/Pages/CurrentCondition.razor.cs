@@ -11,11 +11,12 @@ namespace WeatherApp.Client.Pages
         [Inject]
         public HttpClient Client { get; set; }
 
-        protected CurrentWeather Current { get; private set; }
+        [Parameter]
+        public RealtimeWeather Current { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            Current = await Client.GetFromJsonAsync<CurrentWeather>("Current");
+            Current = await Client.GetFromJsonAsync<RealtimeWeather>("Current");
         }
     }
 }

@@ -6,13 +6,12 @@ using WeatherApp.Shared;
 
 namespace WeatherApp.Client.Pages
 {
-    public class CurrentTempBase : ComponentBase
+    public class CurrentWeatherBase : ComponentBase
     {
         [Inject]
         public HttpClient Client { get; set; }
 
-        [Parameter]
-        public RealtimeWeather Current { get; set; }
+        protected RealtimeWeather Current { get; private set; }
 
         protected override async Task OnInitializedAsync()
         {
